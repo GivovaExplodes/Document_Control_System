@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "User Menu";
+}
+
+@model Document_Control_System.Data.Models.UserModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+    <style>
+        .custom-element {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>Name: @Model.UserName</p>
+    <button onclick="window.location.href='PaymentsMenu.cshtml'">Payments Menu</button>
+    <button onclick="window.location.href='PersonalDetails.cshtml'">Personal Details</button>
+    <button onclick="window.location.href='MainMenu.cshtml'">Log Out</button>
+</body>
+</html>

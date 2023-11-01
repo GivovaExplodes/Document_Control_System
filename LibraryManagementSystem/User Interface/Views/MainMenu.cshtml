@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "Main Menu";
+}
+
+@model Document_Control_System.Data.Models.UserModel
+@model Document_Control_System.Data.Models.RegisterModel
+//merge into 1 model that references both
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+    <style>
+        .custom-element {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick=RegisterAccount()>Register Account</button>
+    <button onclick=UserLogin()>User Login</button>
+    <button onclick=UserLogin()>Staff Login</button>
+    <button onclick="window.location.href='DocumentSearch.cshtml'">Document Search</button>
+
+    <script>
+        function RegisterAccount() {
+            let text;
+            let person = prompt("Username:");
+            let email = prompt("Email:");
+            let password = prompt("Password:");
+            let conpassword = prompt("Confirm Password:");
+            let role = prompt("Role:");
+            if (person == null || person == "" || email == null || email == ""|| password == null || password == ""|| role == null || role == "") {
+                text = "User cancelled the prompt.";
+            } else if (password != conpassword) {
+                text = "passwords do not match";
+            }else if (role == patron) {
+                window.location.href='UserMenu.cshtml';
+            } else if (role == admin ) {
+                window.location.href='StaffMenu.cshtml';
+            }
+        }
+
+        function UserLogin() {
+            let text;
+            let person = prompt("Username:");
+            if (person == null || person == "") {
+                text = "User cancelled the prompt.";
+            } else if (person == @Model.Username && @Model.Role == patron) {
+                window.location.href='UserMenu.cshtml';
+            } else if (person == @Model.Username && @Model.Role == admin ) {
+                window.location.href='StaffMenu.cshtml';
+            } else if (person != @Model.Username) {
+                text = "Username is Incorrect";
+            }
+        }
+    </script>
+</body>
+</html>
