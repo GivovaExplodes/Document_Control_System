@@ -1,0 +1,6 @@
+*.json
+*.cache
+*.bin
+*.props
+*.editorconfig
+*.obj
