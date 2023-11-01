@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Components.Web;
+
 public class BookModel
 {
     public int Id { get; set; }
