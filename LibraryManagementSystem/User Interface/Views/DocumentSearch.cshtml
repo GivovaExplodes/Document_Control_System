@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Documents";
+}
+
+@model Document_Control_System.Data.Models.LibraryModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+    <style>
+        .custom-element {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>Name: @Model.GetAllBooks</p>
+    <button onclick=CheckOutBook()>Check Out</button>
+    <button onclick=ShowCheckedOut()>Show Checked Out</button>
+
+    <script>
+        function CheckOutBook(){
+            //ToDo
+        }
+        function ShowCheckedOut(){
+            //ToDo
+        }
+
+    </script>
+</body>
