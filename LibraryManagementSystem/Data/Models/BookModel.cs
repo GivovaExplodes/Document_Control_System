@@ -17,4 +17,13 @@ public class BookModel
         Lost,
         // Add more statuses as needed - MJ
     }
+
+    public string Stringify(char delimiter) {
+        return Id + delimiter
+        + Title + delimiter
+        + Author + delimiter
+        + ISBN + delimiter
+        + Quantity + delimiter
+        + Status;
+    }
 }
