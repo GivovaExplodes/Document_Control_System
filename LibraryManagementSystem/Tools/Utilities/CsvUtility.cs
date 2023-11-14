@@ -1,5 +1,6 @@
 using System.Globalization;
 using CsvHelper;
+
 public static class CsvUtility
 {
     public static void WriteRecord<T>(string filePath, T record)

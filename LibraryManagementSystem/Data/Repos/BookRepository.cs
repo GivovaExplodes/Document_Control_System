@@ -8,7 +8,7 @@ public class BookRepository : IBookRepository
     public BookModel GetBookById(int bookId)
     {
         var books = ReadFromCsv();
-        return books.FirstOrDefault(b => b.BookId == bookId) ?? throw new KeyNotFoundException($"Book with ID {bookId} not found.");
+        return books.FirstOrDefault(b => b.Id == bookId) ?? throw new KeyNotFoundException($"Book with ID {bookId} not found.");
     }
 
     public void AddBook(BookModel book)
@@ -21,7 +21,7 @@ public class BookRepository : IBookRepository
     public void RemoveBook(BookModel book)
     {
         var books = ReadFromCsv();
-        var bookToRemove = books.FirstOrDefault(b => b.BookId == book.BookId);
+        var bookToRemove = books.FirstOrDefault(b => b.Id == book.Id);
         if (bookToRemove != null)
         {
             books.Remove(bookToRemove);
