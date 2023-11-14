@@ -1,6 +1,6 @@
 public class BookModel
 {
-    public int Id { get; set; }
+    public int BookId { get; set; }
     public required string Title { get; set; }
     public required string Author { get; set; }
     public required string ISBN { get; set; }
