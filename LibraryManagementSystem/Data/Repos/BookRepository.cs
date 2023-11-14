@@ -1,5 +1,5 @@
 using System.Globalization;
-
+using CsvHelper;
 public class BookRepository : IBookRepository
 {
     private const string FilePath = "Books.csv";
@@ -7,7 +7,7 @@ public class BookRepository : IBookRepository
     public BookModel GetBookById(int bookId)
     {
         var books = ReadFromCsv();
-        return books.FirstOrDefault(b => b.BookId == bookId);
+        return books.FirstOrDefault(b => b.BookId == bookId) ?? throw new KeyNotFoundException($"Book with ID {bookId} not found.");
     }
 
     public void AddBook(BookModel book)
@@ -20,8 +20,12 @@ public class BookRepository : IBookRepository
     public void RemoveBook(BookModel book)
     {
         var books = ReadFromCsv();
-        books.Remove(book);
-        WriteToCsv(books);
+        var bookToRemove = books.FirstOrDefault(b => b.BookId == book.BookId);
+        if (bookToRemove != null)
+        {
+            books.Remove(bookToRemove);
+            WriteToCsv(books);
+        }
     }
 
     public IEnumerable<BookModel> GetAll()
@@ -38,7 +42,7 @@ public class BookRepository : IBookRepository
         }
     }
 
-    private void WriteToCsv(IEnumerable<Book> books)
+    private void WriteToCsv(IEnumerable<BookModel> books)
     {
         using (var writer = new StreamWriter(FilePath))
         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))

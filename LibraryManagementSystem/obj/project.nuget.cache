@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "oJ9oJgqSrhAkMOAuxFtzmGvLkoq3/Ptj0+JCYXn/BY0tnJtd5CO741P0mR9UFL9+fjzKFsoh4OS2DZxnBxDxOw==",
+  "dgSpecHash": "s4gL2qaqBpK41SZTN2oPdDp0cqRn62XZvNqpc6KMAtf7pVCPtBAkS6XiPCl5It4mRnX2X+uNxfTnFAKPKVK6XA==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Document_Control_System\\LibraryManagementSystem\\LibraryManagementSystem.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\matth\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
