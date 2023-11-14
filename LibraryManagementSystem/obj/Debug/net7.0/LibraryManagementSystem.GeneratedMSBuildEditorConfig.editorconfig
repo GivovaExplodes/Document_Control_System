@@ -9,37 +9,53 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LibraryManagementSystem
 build_property.RootNamespace = LibraryManagementSystem
-build_property.ProjectDir = C:\Users\ebuck\OneDrive - University of Limerick\GitHub\Document_Control_System\LibraryManagementSystem\
+build_property.ProjectDir = c:\Users\mikeh\DocumentControlSystem\Document_Control_System\LibraryManagementSystem\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\ebuck\OneDrive - University of Limerick\GitHub\Document_Control_System\LibraryManagementSystem
+build_property.MSBuildProjectDirectory = c:\Users\mikeh\DocumentControlSystem\Document_Control_System\LibraryManagementSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/ebuck/OneDrive - University of Limerick/GitHub/Document_Control_System/LibraryManagementSystem/User Interface/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = VXNlciBJbnRlcmZhY2VcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebuck/OneDrive - University of Limerick/GitHub/Document_Control_System/LibraryManagementSystem/User Interface/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = VXNlciBJbnRlcmZhY2VcVmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebuck/OneDrive - University of Limerick/GitHub/Document_Control_System/LibraryManagementSystem/User Interface/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = VXNlciBJbnRlcmZhY2VcVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/Library/CheckedOutBooks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeVxDaGVja2VkT3V0Qm9va3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebuck/OneDrive - University of Limerick/GitHub/Document_Control_System/LibraryManagementSystem/User Interface/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = VXNlciBJbnRlcmZhY2VcVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/Library/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebuck/OneDrive - University of Limerick/GitHub/Document_Control_System/LibraryManagementSystem/User Interface/Views/Shared/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = VXNlciBJbnRlcmZhY2VcVmlld3NcU2hhcmVkXF9WaWV3U3RhcnQuY3NodG1s
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/MainMenu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbk1lbnVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebuck/OneDrive - University of Limerick/GitHub/Document_Control_System/LibraryManagementSystem/User Interface/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = VXNlciBJbnRlcmZhY2VcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/MainMenu/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbk1lbnVcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebuck/OneDrive - University of Limerick/GitHub/Document_Control_System/LibraryManagementSystem/User Interface/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = VXNlciBJbnRlcmZhY2VcVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-df0upq5yj4
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/Shared/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/mikeh/DocumentControlSystem/Document_Control_System/LibraryManagementSystem/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-spbznog2vl

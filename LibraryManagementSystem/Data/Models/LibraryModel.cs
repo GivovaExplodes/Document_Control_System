@@ -39,6 +39,15 @@ public class LibraryModel
         }
     }
 
+    public void CheckOutBook(int bookid)
+    {
+        var existingBook = books.FirstOrDefault(b => b.Id == bookid);
+        if (existingBook != null)
+        {
+            existingBook.Status = BookModel.BookStatus.CheckedOut;
+        }
+    }
+
     public void RemoveBook(int bookId)
     {
         var bookToRemove = books.FirstOrDefault(b => b.Id == bookId);

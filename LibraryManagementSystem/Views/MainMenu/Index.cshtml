@@ -1,0 +1,49 @@
+﻿@using LibraryManagementSystem.Models
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model UserModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/_Layout.cshtml.css">
+    <style>
+        .custom-element {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Main Menu</h2>
+    
+    <p>Welcome, @Model.Username!</p>
+    
+    <p>Your Loyalty Points: @Model.LoyaltyPts</p>
+    
+    @if (Model.Role == UserModel.UserRole.admin)
+    {
+        <p>You have administrative privileges.</p>
+    }
+    else if (Model.Role == UserModel.UserRole.librarian)
+    {
+        <p>You are a librarian.</p>
+    }
+    else if (Model.Role == UserModel.UserRole.patron)
+    {
+        <p>You are a patron.</p>
+    }
+
+    <!-- Add more content based on the user's role or specific requirements -->
+    <form asp-controller="Library" asp-action="Index" method="post">
+    <!-- Your other form elements -->
+
+    <button type="submit">Library</button>
+</form>
+
+</body>
+</html>

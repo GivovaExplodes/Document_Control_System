@@ -1,0 +1,29 @@
+@model List<BookModel>
+
+<h2>Checked Out Books</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Quantity</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.ISBN</td>
+                <td>@book.Quantity</td>
+                <td>@book.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
