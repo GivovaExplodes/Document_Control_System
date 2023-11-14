@@ -1,0 +1,28 @@
+public interface IReservationRepository
+{
+    // Task to add a new reservation
+    Task AddReservationAsync(ReservationModel reservation);
+
+    // Task to update an existing reservation
+    Task UpdateReservationAsync(ReservationModel reservation);
+
+    // Task to delete a reservation by its ID
+    Task DeleteReservationAsync(int reservationId);
+
+    // Task to retrieve a reservation by its ID
+    Task<ReservationModel> GetReservationByIdAsync(int reservationId);
+
+    // Task to retrieve all reservations for a specific user
+    Task<IEnumerable<ReservationModel>> GetReservationsByUserIdAsync(int userId);
+
+    // Task to retrieve all reservations for a specific book
+    Task<IEnumerable<ReservationModel>> GetReservationsByBookIdAsync(int bookId);
+
+    // Task to retrieve all reservations within a certain date range
+    Task<IEnumerable<ReservationModel>> GetReservationsByDateRangeAsync(DateTime startDate, DateTime endDate);
+
+    // Task to retrieve all reservations with a surcharge
+    Task<IEnumerable<ReservationModel>> GetReservationsWithSurchargeAsync();
+
+    // Other methods as needed based on business requirements
+}

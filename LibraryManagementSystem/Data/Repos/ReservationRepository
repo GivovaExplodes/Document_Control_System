@@ -1,0 +1,66 @@
+public class ReservationRepository : IReservationRepository
+{
+    private readonly DatabaseContext _context;
+
+    public ReservationRepository(DatabaseContext context)
+    {
+        _context = context;
+    }
+
+    public async Task AddReservationAsync(ReservationModel reservation)
+    {
+        _context.Reservations.Add(reservation);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task UpdateReservationAsync(ReservationModel reservation)
+    {
+        _context.Reservations.Update(reservation);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteReservationAsync(int reservationId)
+    {
+        var reservation = await _context.Reservations.FindAsync(reservationId);
+        if (reservation != null)
+        {
+            _context.Reservations.Remove(reservation);
+            await _context.SaveChangesAsync();
+        }
+    }
+
+    public async Task<ReservationModel> GetReservationByIdAsync(int reservationId)
+    {
+        return await _context.Reservations.FindAsync(reservationId);
+    }
+
+    public async Task<IEnumerable<ReservationModel>> GetReservationsByUserIdAsync(int userId)
+    {
+        return await _context.Reservations
+                             .Where(r => r.UserId == userId)
+                             .ToListAsync();
+    }
+
+    public async Task<IEnumerable<ReservationModel>> GetReservationsByBookIdAsync(int bookId)
+    {
+        return await _context.Reservations
+                             .Where(r => r.BookId == bookId)
+                             .ToListAsync();
+    }
+
+    public async Task<IEnumerable<ReservationModel>> GetReservationsByDateRangeAsync(DateTime startDate, DateTime endDate)
+    {
+        return await _context.Reservations
+                             .Where(r => r.ReservationDate >= startDate && r.ReservationDate <= endDate)
+                             .ToListAsync();
+    }
+
+    public async Task<IEnumerable<ReservationModel>> GetReservationsWithSurchargeAsync()
+    {
+        return await _context.Reservations
+                             .Where(r => r.Surcharge > 0)
+                             .ToListAsync();
+    }
+}
+
+// Assuming the DatabaseContext is already defined somewhere with DbSet<ReservationModel> Reservations

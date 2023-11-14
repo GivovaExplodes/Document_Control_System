@@ -1,0 +1,37 @@
+public interface IBookRepository
+{
+    // Task to add a new book
+    Task AddBookAsync(BookModel book);
+
+    // Task to update an existing book
+    Task UpdateBookAsync(BookModel book);
+
+    // Task to delete a book by its ID
+    Task DeleteBookAsync(int bookId);
+
+    // Task to retrieve a book by its ID
+    Task<BookModel> GetBookByIdAsync(int bookId);
+
+    // Task to retrieve a list of all books
+    Task<IEnumerable<BookModel>> GetAllBooksAsync();
+
+    // Task to retrieve books by title
+    Task<IEnumerable<BookModel>> GetBooksByTitleAsync(string title);
+
+    // Task to retrieve books by author
+    Task<IEnumerable<BookModel>> GetBooksByAuthorAsync(string author);
+
+    // Task to retrieve books by ISBN
+    Task<BookModel> GetBookByISBNAsync(string isbn);
+
+    // Task to retrieve books by status
+    Task<IEnumerable<BookModel>> GetBooksByStatusAsync(BookStatus status);
+
+    // Task to update the status of a book
+    Task UpdateBookStatusAsync(int bookId, BookStatus status);
+
+    // Task to retrieve books with a quantity less than a certain threshold
+    Task<IEnumerable<BookModel>> GetBooksWithLowQuantityAsync(int threshold);
+
+    // Additional methods as needed for business logic
+}
