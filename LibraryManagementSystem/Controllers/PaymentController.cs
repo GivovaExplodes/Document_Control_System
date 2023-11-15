@@ -12,18 +12,24 @@ public class PaymentController : Controller
         allowedWithdrawTime = new TimeSpan(allowedWithdrawTimeInDays, 0, 0, 0);
     }
 
-    //Action method for displaying overdue reservations
-    public IActionResult LateFees(int userId)
+    //redirects to LateFees()
+    [HttpPost]
+    public IActionResult Index(int userId)
     {
         List<ReservationModel> reservations = _reservations.GetReservationsByUserId(userId);
         for (int i = 0; i < reservations.Count; i++)
         {
-            if (reservations[i].ReservationDate + allowedWithdrawTime <= DateTime.Now)
+            if (reservations[i].ReservationDate + allowedWithdrawTime >= DateTime.Now)
             {
-                reservations.RemoveAt(i);
-                i--;
+                reservations.Remove(reservations[i]);
             }
         }
+        return RedirectToAction("LateFees", reservations);
+    }
+
+    //Action method for displaying overdue reservations
+    public IActionResult LateFees(List<ReservationModel> reservations)
+    {
         return View(reservations);
     }
 
@@ -34,7 +40,7 @@ public class PaymentController : Controller
         {
             _reservations.RemoveReservation(reservation);
         }
-        return RedirectToAction("LateFees");
+        return RedirectToAction("Index", reservation.UserId);
     }
 
 }

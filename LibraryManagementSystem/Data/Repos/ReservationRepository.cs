@@ -3,7 +3,7 @@ using CsvHelper;
 
 public class ReservationRepository : IReservationRepository
 {
-    private const string FilePath = "Reservations.csv";
+    private const string FilePath = "Data/Databases/Reservations.csv";
 
     public ReservationModel GetReservationById(int reservationId)
     {
