@@ -18,7 +18,7 @@ public class LibraryModel
 
     public BookModel? GetBookById(int bookId)
     {
-        return books.FirstOrDefault(b => b.Id == bookId);
+        return books.FirstOrDefault(b => b.BookId == bookId);
     }
 
     public void AddBook(BookModel book)
@@ -28,7 +28,7 @@ public class LibraryModel
 
     public void UpdateBook(BookModel book)
     {
-        var existingBook = books.FirstOrDefault(b => b.Id == book.Id);
+        var existingBook = books.FirstOrDefault(b => b.BookId == book.BookId);
         if (existingBook != null)
         {
             existingBook.Title = book.Title;
@@ -50,7 +50,7 @@ public class LibraryModel
 
     public void RemoveBook(int bookId)
     {
-        var bookToRemove = books.FirstOrDefault(b => b.Id == bookId);
+        var bookToRemove = books.FirstOrDefault(b => b.BookId == bookId);
         if (bookToRemove != null)
         {
             books.Remove(bookToRemove);
@@ -65,7 +65,7 @@ public class LibraryModel
 
     public UserModel? GetUserById(int userId)
     {
-        return users.FirstOrDefault(u => u.Id == userId);
+        return users.FirstOrDefault(u => u.UserId == userId);
     }
 
     public void AddUser(UserModel user)
@@ -75,7 +75,7 @@ public class LibraryModel
 
     public void UpdateUser(UserModel user)
     {
-        var existingUser = users.FirstOrDefault(u => u.Id == user.Id);
+        var existingUser = users.FirstOrDefault(u => u.UserId == user.UserId);
         if (existingUser != null)
         {
             existingUser.Username = user.Username;
@@ -86,7 +86,7 @@ public class LibraryModel
 
     public void RemoveUser(int userId)
     {
-        var userToRemove = users.FirstOrDefault(u => u.Id == userId);
+        var userToRemove = users.FirstOrDefault(u => u.UserId == userId);
         if (userToRemove != null)
         {
             users.Remove(userToRemove);
