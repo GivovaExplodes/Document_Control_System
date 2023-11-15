@@ -21,10 +21,10 @@ public class MainMenuController : Controller
             // For demonstration purposes, redirect to the Index action with a sample user
             var userModel = new UserModel
             {
-                Id = 1,
+                UserId = 1,
                 Username = "SampleUser",
                 Name = "John Doe",
-                LoyaltyPts = 100,
+                LoyaltyPoints = 100,
                 Role = UserModel.UserRole.patron
             };
 

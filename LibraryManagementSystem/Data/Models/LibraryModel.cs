@@ -41,7 +41,7 @@ public class LibraryModel
 
     public void CheckOutBook(int bookid)
     {
-        var existingBook = books.FirstOrDefault(b => b.Id == bookid);
+        var existingBook = books.FirstOrDefault(b => b.BookId == bookid);
         if (existingBook != null)
         {
             existingBook.Status = BookModel.BookStatus.CheckedOut;
