@@ -16,34 +16,50 @@
             color: #fff;
             padding: 10px;
         }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items at the top of the container */
+            height: 100vh; /* Set the height to the viewport height */
+        }
+
+        /* Style for the centered elements */
+        .centered-elements {
+            text-align: center; /* Center the content horizontally */
+            margin-top: 20px; /* Add top margin if needed */
+        }
     </style>
 </head>
 <body>
-    <h2>Main Menu</h2>
+    <div class="container">
+        <div class="centered-elements">
+            <h2>Main Menu</h2>
     
-    <p>Welcome, @Model.Username!</p>
+            <p>Welcome, @Model.Username!</p>
     
-    <p>Your Loyalty Points: @Model.LoyaltyPts</p>
+            <p>Your Loyalty Points: @Model.LoyaltyPts</p>
     
-    @if (Model.Role == UserModel.UserRole.admin)
-    {
-        <p>You have administrative privileges.</p>
-    }
-    else if (Model.Role == UserModel.UserRole.librarian)
-    {
-        <p>You are a librarian.</p>
-    }
-    else if (Model.Role == UserModel.UserRole.patron)
-    {
-        <p>You are a patron.</p>
-    }
+            @if (Model.Role == UserModel.UserRole.admin)
+            {
+                <p>You have administrative privileges.</p>
+            }
+            else if (Model.Role == UserModel.UserRole.librarian)
+            {
+                <p>You are a librarian.</p>
+            }
+            else if (Model.Role == UserModel.UserRole.patron)
+            {
+                <p>You are a patron.</p>
+            }
 
-    <!-- Add more content based on the user's role or specific requirements -->
-    <form asp-controller="Library" asp-action="Index" method="post">
-    <!-- Your other form elements -->
+            <!-- Add more content based on the user's role or specific requirements -->
+            <form asp-controller="Library" asp-action="Index" method="post">
+            <!-- Your other form elements -->
 
-    <button type="submit">Library</button>
-</form>
+                <button type="submit">Library</button>
+            </form>
+        </div>
+    </div>
 
 </body>
 </html>
