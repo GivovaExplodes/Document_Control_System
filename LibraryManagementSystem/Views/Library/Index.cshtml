@@ -46,7 +46,7 @@
                     @foreach (var book in Model)
                     {
                         <tr>
-                            <td>@book.Id</td>
+                            <td>@book.BookId</td>
                             <td>@book.Title</td>
                             <td>@book.Author</td>
                             <td>@book.ISBN</td>
@@ -54,7 +54,7 @@
                             <td>@book.Status</td>
                             <td>
                                 <form method="post" asp-action="CheckOutBook">
-                                    <input type="hidden" name="bookId" value="@book.Id" />
+                                    <input type="hidden" name="bookId" value="@book.BookId" />
                                     <button type="submit">Check Out</button>
                                 </form>
                             </td>
