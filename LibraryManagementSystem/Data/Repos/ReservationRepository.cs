@@ -3,13 +3,27 @@ using CsvHelper;
 
 public class ReservationRepository : IReservationRepository
 {
-    private const string FilePath = "Reservations.csv";
+    private const string FilePath = "Data/Databases/Reservations.csv";
 
     public ReservationModel GetReservationById(int reservationId)
     {
         var reservations = ReadFromCsv();
         return reservations.FirstOrDefault(r => r.ReservationId == reservationId)
                ?? throw new KeyNotFoundException($"Reservation with ID {reservationId} not found.");
+    }
+
+    public List<ReservationModel> GetReservationsByUserId(int userID)
+    {
+        List<ReservationModel> reservations = ReadFromCsv();
+        List<ReservationModel> output = new();
+        for (int i = 0; i < reservations.Count; i++)
+        {
+            if (reservations[i].UserId == userID)
+            {
+                output.Add(reservations[i]);
+            }
+        }
+        return output;
     }
 
     public void AddReservation(ReservationModel reservation)

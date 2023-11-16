@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Late Fees";
+}
+
+@model List<ReservationModel>
+
+<h2>Late Fees</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book ID</th>
+            <th>Date Reserved</th>
+            <th>Amount Due</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model)
+        {
+            <tr>
+                <td>@reservation.ReservationId</td>
+                <td>@reservation.BookId</td>
+                <td>@reservation.ReservationDate</td>
+                <td>@PaymentService.CalculateFee(@reservation)</td>
+            </tr>
+        }
+    </tbody>
+</table>
