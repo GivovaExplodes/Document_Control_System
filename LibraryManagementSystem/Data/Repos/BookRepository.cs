@@ -3,12 +3,12 @@ using CsvHelper;
 
 public class BookRepository : IBookRepository
 {
-    private const string FilePath = "Books.csv";
+    private const string FilePath = "Data/Databases/Books.csv";
 
     public BookModel GetBookById(int bookId)
     {
         var books = ReadFromCsv();
-        return books.FirstOrDefault(b => b.Id == bookId) ?? throw new KeyNotFoundException($"Book with ID {bookId} not found.");
+        return books.FirstOrDefault(b => b.BookId == bookId) ?? throw new KeyNotFoundException($"Book with ID {bookId} not found.");
     }
 
     public void AddBook(BookModel book)
@@ -21,7 +21,7 @@ public class BookRepository : IBookRepository
     public void RemoveBook(BookModel book)
     {
         var books = ReadFromCsv();
-        var bookToRemove = books.FirstOrDefault(b => b.Id == book.Id);
+        var bookToRemove = books.FirstOrDefault(b => b.BookId == book.BookId);
         if (bookToRemove != null)
         {
             books.Remove(bookToRemove);

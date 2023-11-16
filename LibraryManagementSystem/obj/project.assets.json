@@ -49,19 +49,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mikeh\\.nuget\\packages\\": {}
+    "C:\\Users\\adape\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mikeh\\DocumentControlSystem\\Document_Control_System\\LibraryManagementSystem\\LibraryManagementSystem.csproj",
+      "projectUniqueName": "C:\\Users\\adape\\Documents\\GitHub\\Document_Control_System\\LibraryManagementSystem\\LibraryManagementSystem.csproj",
       "projectName": "LibraryManagementSystem",
-      "projectPath": "C:\\Users\\mikeh\\DocumentControlSystem\\Document_Control_System\\LibraryManagementSystem\\LibraryManagementSystem.csproj",
-      "packagesPath": "C:\\Users\\mikeh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mikeh\\DocumentControlSystem\\Document_Control_System\\LibraryManagementSystem\\obj\\",
+      "projectPath": "C:\\Users\\adape\\Documents\\GitHub\\Document_Control_System\\LibraryManagementSystem\\LibraryManagementSystem.csproj",
+      "packagesPath": "C:\\Users\\adape\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\adape\\Documents\\GitHub\\Document_Control_System\\LibraryManagementSystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mikeh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\adape\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
