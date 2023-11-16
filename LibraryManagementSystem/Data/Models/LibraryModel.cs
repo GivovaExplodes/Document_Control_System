@@ -16,6 +16,14 @@ public class LibraryModel
         return books;
     }
 
+        public List<BookModel> GetCheckedOutBooks()
+    {
+        List<BookModel> allBooks = GetAllBooks();
+        List<BookModel> checkedOutBooks = allBooks.Where(book => book.Status == BookModel.BookStatus.CheckedOut).ToList();
+
+        return checkedOutBooks;
+    }
+
     public BookModel? GetBookById(int bookId)
     {
         return books.FirstOrDefault(b => b.BookId == bookId);
