@@ -1,3 +1,5 @@
+using LibraryManagementSystem.Models;
+
 public class LibraryModel
 {
     private List<BookModel> books;
@@ -19,9 +21,17 @@ public class LibraryModel
         public List<BookModel> GetCheckedOutBooks()
     {
         List<BookModel> allBooks = GetAllBooks();
-        List<BookModel> checkedOutBooks = allBooks.Where(book => book.Status == BookModel.BookStatus.CheckedOut).ToList();
+        List<BookModel> checkedOutBooks = new List<BookModel>();
 
-        return checkedOutBooks;
+        foreach (var book in books)
+            {
+                if (book.GetCurrentState() is CheckedOutState)
+                {
+                    checkedOutBooks.Add(book);
+                }
+            }
+
+            return checkedOutBooks;
     }
 
     public BookModel? GetBookById(int bookId)
@@ -43,7 +53,7 @@ public class LibraryModel
             existingBook.Author = book.Author;
             existingBook.ISBN = book.ISBN;
             existingBook.Quantity = book.Quantity;
-            existingBook.Status = book.Status;
+            existingBook.ChangeState(book.GetCurrentState());
         }
     }
 
@@ -52,7 +62,7 @@ public class LibraryModel
         var existingBook = books.FirstOrDefault(b => b.BookId == bookid);
         if (existingBook != null)
         {
-            existingBook.Status = BookModel.BookStatus.CheckedOut;
+            existingBook.Borrow();
         }
     }
 

@@ -15,4 +15,31 @@ public class BookModel
         Lost,
         // Add more statuses as needed - MJ
     }
+
+     private IBookState currentState;
+
+    public BookModel()
+    {
+        currentState = new AvailableState(); // Initial state is available
+    }
+
+    public void ChangeState(IBookState newState)
+    {
+        currentState = newState;
+    }
+
+    public void Borrow()
+    {
+        currentState.BorrowBook(this);
+    }
+
+    public void Return()
+    {
+        currentState.ReturnBook(this);
+    }
+
+    public IBookState GetCurrentState()
+        {
+            return currentState;
+        }
 }
