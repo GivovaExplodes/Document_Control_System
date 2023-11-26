@@ -1,29 +1,56 @@
 @{
     ViewData["Title"] = "Late Fees";
+    List<ReservationModel>? reservations;
+    reservations = TempData.Get<List<ReservationModel>>("ReservationData");
 }
 
-@model List<ReservationModel>
-
-<h2>Late Fees</h2>
-
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Book ID</th>
-            <th>Date Reserved</th>
-            <th>Amount Due</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var reservation in Model)
-        {
-            <tr>
-                <td>@reservation.ReservationId</td>
-                <td>@reservation.BookId</td>
-                <td>@reservation.ReservationDate</td>
-                <td>@PaymentService.CalculateFee(@reservation)</td>
-            </tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/_Layout.cshtml.css">
+    <style>
+        .custom-element {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
         }
-    </tbody>
-</table>
+    </style>
+</head>
+<body>
+    <h2>Late Fees</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Book ID</th>
+                <th>Date Reserved</th>
+                <th>Amount Due</th>
+                <th>Pay</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (reservations != null)
+            {
+                @foreach (var reservation in reservations)
+                {
+                    <tr>
+                        <td>@reservation.ReservationId</td>
+                        <td>@reservation.BookId</td>
+                        <td>@reservation.ReservationDate</td>
+                        <td>@PaymentService.CalculateFee(@reservation)</td>
+                        <td>
+                            <form asp-controller="Payment" asp-action="PayFee" asp-route-reservationId="@reservation.ReservationId" method="post">
+                                <button type="submit">Pay now</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <form asp-controller="MainMenu" asp-action="Index" asp-route-userId="@reservations[0].UserId" method="post">
+        <button type="submit">Return</button>
+    </form>
+</body>
+</html>

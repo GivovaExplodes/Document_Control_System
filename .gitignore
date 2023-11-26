@@ -6,3 +6,5 @@
 *.obj
 *.txt
 *.cache
+*.dll
+*.pdb
