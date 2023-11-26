@@ -14,43 +14,55 @@
             color: #fff;
             padding: 10px;
         }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+        }
+        .centered-elements {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <h2>Late Fees</h2>
+    <div class="container">
+        <div class="centered-elements">
+            <h2>Late Fees</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Book ID</th>
-                <th>Date Reserved</th>
-                <th>Amount Due</th>
-                <th>Pay</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (reservations != null)
-            {
-                @foreach (var reservation in reservations)
-                {
+            <table>
+                <thead>
                     <tr>
-                        <td>@reservation.ReservationId</td>
-                        <td>@reservation.BookId</td>
-                        <td>@reservation.ReservationDate</td>
-                        <td>@PaymentService.CalculateFee(@reservation)</td>
-                        <td>
-                            <form asp-controller="Payment" asp-action="PayFee" asp-route-reservationId="@reservation.ReservationId" method="post">
-                                <button type="submit">Pay now</button>
-                            </form>
-                        </td>
+                        <th>ID</th>
+                        <th>Book ID</th>
+                        <th>Date Reserved</th>
+                        <th>Amount Due</th>
+                        <th>Pay</th>
                     </tr>
-                }
-            }
-        </tbody>
-    </table>
-    <form asp-controller="MainMenu" asp-action="Index" asp-route-userId="@reservations[0].UserId" method="post">
-        <button type="submit">Return</button>
-    </form>
+                </thead>
+                <tbody>
+                    @if (reservations != null)
+                    {
+                        @foreach (var reservation in reservations)
+                        {
+                            <tr>
+                                <td>@reservation.ReservationId</td>
+                                <td>@reservation.BookId</td>
+                                <td>@reservation.ReservationDate</td>
+                                <td>@PaymentService.CalculateFee(@reservation)</td>
+                                <td>
+                                    <form asp-controller="Payment" asp-action="PayFee" asp-route-reservationId="@reservation.ReservationId" method="post">
+                                        <button type="submit">Pay now</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <form asp-controller="MainMenu" asp-action="Index" asp-route-userId="@reservations[0].UserId" method="post">
+                <button type="submit">Return</button>
+            </form>
 </body>
 </html>
