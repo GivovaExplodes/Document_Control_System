@@ -1,0 +1,7 @@
+// LibraryManagementSystem/Data/Models/IDocumentSubject.cs
+public interface IDocumentSubject
+{
+    void Attach(IBookObserver observer);
+    void Detach(IBookObserver observer);
+    void Notify();
+}

@@ -1,0 +1,34 @@
+// LibraryManagementSystem/Controllers/Services/DocumentAvailabilityService.cs
+using LibraryManagementSystem.Data.Models; // Import the namespace where DocumentModel is defined
+
+public class DocumentAvailabilityService : IDocumentSubject
+{
+    private List<IBookObserver> _observers = new List<IBookObserver>();
+    private BookModel _book;
+
+    public BookAvailabilityService(BookModel book)
+    {
+        _book = book;
+    }
+
+    public void Attach(IBookObserver observer)
+    {
+        _observers.Add(observer);
+    }
+
+    public void Detach(IBookObserver observer)
+    {
+        _observers.Remove(observer);
+    }
+
+    public void Notify()
+    {
+        _observers.ForEach(observer => observer.Update(_book));
+    }
+
+    public void ChangeAvailability(bool isAvailable)
+    {
+        _book.IsAvailable = isAvailable;
+        Notify();
+    }
+}

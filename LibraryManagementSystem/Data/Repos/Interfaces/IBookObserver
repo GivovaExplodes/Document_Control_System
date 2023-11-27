@@ -1,0 +1,5 @@
+// LibraryManagementSystem/Data/Models/IDocumentObserver.cs
+public interface IDocumentObserver
+{
+    void Update(BookModel BookStatus);
+}

@@ -1,0 +1,21 @@
+// LibraryManagementSystem/Controllers/Services/DocumentSearchService.cs
+using LibraryManagementSystem.Data.Models; // Import the namespace where DocumentModel is defined
+
+public class BookSearchService
+{
+    private readonly IBookSubject _bookAvailabilityService;
+
+    public BookSearchService(IBookSubject bookAvailabilityService)
+    {
+        _bookAvailabilityService = bookAvailabilityService;
+    }
+
+    public void SearchForBook(string criteria)
+    {
+        // Implement the search logic here
+        // Example: Check if a document matches the criteria
+
+        // If the document is not available, attach this service to be notified when it becomes available
+        // _documentAvailabilityService.Attach(new UserNotificationService());
+    }
+}

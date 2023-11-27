@@ -1,0 +1,14 @@
+// LibraryManagementSystem/Controllers/Services/UserNotificationService.cs
+using LibraryManagementSystem.Data.Models; // Import the namespace where DocumentModel is defined
+
+public class UserNotificationService : IBookObserver
+{
+    public void Update(BookModel document)
+    {
+        if (book.IsAvailable)
+        {
+            // Logic to notify the user that the document is available
+            Console.WriteLine($"Book {book.Title} is now available.");
+        }
+    }
+}
