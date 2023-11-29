@@ -54,12 +54,18 @@ public class ReservationRepository : IReservationRepository
         }
     }
 
-    private void WriteToCsv(IEnumerable<ReservationModel> reservations)
+    private void WriteToCsv(List<ReservationModel> reservations)
     {
+        Console.WriteLine("<------------------------>");
+        Console.WriteLine("Writing to file " + FilePath + ": " + reservations.ToString());
+        Console.WriteLine("<------------------------>");
         using (var writer = new StreamWriter(FilePath))
-        using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
         {
-            csv.WriteRecords(reservations);
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(reservations);;
+            }   
         }
+        
     }
 }

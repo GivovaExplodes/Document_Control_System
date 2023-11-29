@@ -36,13 +36,14 @@
             <h2>Main Menu</h2>
     
             <p>Welcome, @Model.Username!</p>
+          
             <p>Your Loyalty Points: @Model.LoyaltyPoints</p>
     
             @if (Model.Role == UserModel.UserRole.admin)
             {
                 <p>You have administrative privileges.</p>
             }
-            else if (Model.Role == UserModel.UserRole.librarian)
+                else if (Model.Role == UserModel.UserRole.librarian)
             {
                 <p>You are a librarian.</p>
             }
@@ -51,19 +52,15 @@
                 <p>You are a patron.</p>
             }
 
+            <form asp-controller="Payment" asp-action="Index" asp-route-userId="@Model.UserId" method="post">
+                <button type="submit">Pay late fees.</button>
+            </form>
+
             <!-- Add more content based on the user's role or specific requirements -->
             <form asp-controller="Library" asp-action="Index" method="post">
-            <!-- Your other form elements -->
-             <button type="submit">Library</button>
-            </form>
-          
-            <form asp-controller="Payment" asp-action="Index" asp-route-userId="@Model.UserId" method="post">
-            <!-- Your other form elements -->
-
-            <button type="submit">Pay late fees.</button>
-            </form>               
+                <button type="submit">Library</button>
+            </form>        
         </div>
     </div>
-
 </body>
 </html>
