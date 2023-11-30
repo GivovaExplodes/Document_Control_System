@@ -2,12 +2,14 @@
 public static class PaymentService
 {
     const decimal costPerDayOverdue = 0.2M;
+    const int daysAllowed = 14;
 
     //Calculates fee from a reservation based on surcharge and days overdue. Being underdue returns a fee of 0.
     public static decimal CalculateFee(ReservationModel reservation)
     {
         int daysOverdue = (DateTime.Now - reservation.ReservationDate).Days;
-        return (daysOverdue > 1) ? reservation.Surcharge + costPerDayOverdue * daysOverdue : 0;
+        decimal overdueCost = Math.Max(costPerDayOverdue * (daysOverdue - daysAllowed), 0);
+        return (daysOverdue > 1) ? reservation.Surcharge + overdueCost : 0;
     }
 
     public static Receipt? PayLateFee(ReservationModel reservation)
