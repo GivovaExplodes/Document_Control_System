@@ -1,7 +1,32 @@
-@model ReservationModel
+@{
+    int reservationId = (int)TempData["reservationId"];
+    string receipt = TempData["receipt"].ToString();
+    ReservationModel reservation = new ReservationRepository().GetReservationById(reservationId);
+}
 
-<h2>Pay Fee</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/_Layout.cshtml.css">
+    <style>
+        .custom-element {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Thanks for paying!</h2>
 
-<p>Insert all your bank details here:</p>
+    <p>We hope you enjoyed your experience.:</p>
 
-@Html.ActionLink("Return.", "Index", "Payment", Model.UserId)
+    <h3>Receipt:</h3>
+
+    <pre>@receipt</pre>
+
+    <form asp-controller="Payment" asp-action="Index" asp-route-userId="@reservation.UserId" method="post">
+        <button type="submit">Return</button>
+    </form>
+</body>
+</html>
