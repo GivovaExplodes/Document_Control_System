@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/_Layout.cshtml.css">
+    <style>
+        .custom-element {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+         .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items at the top of the container */
+            height: 100vh; /* Set the height to the viewport height */
+        }
+
+        /* Style for the centered elements */
+        .centered-elements {
+            text-align: center; /* Center the content horizontally */
+            margin-top: 20px; /* Add top margin if needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="centered-elements">
+            <h2>Account Registered Successfully</h2>
+
+            <form asp-controller="MainMenu" asp-action="Login" method="post">
+                <button type="submit">Return to Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
