@@ -3,8 +3,6 @@ using CsvHelper;
 
 public class ReservationRepository : IReservationRepository
 {
-    private const string FilePath = "Data/Databases/Reservations.csv";
-
     public ReservationModel GetReservationById(int reservationId)
     {
         var reservations = ReadFromCsv();
@@ -47,7 +45,7 @@ public class ReservationRepository : IReservationRepository
 
     private List<ReservationModel> ReadFromCsv()
     {
-        using (var reader = new StreamReader(FilePath))
+        using (var reader = new StreamReader(Constants.ReservationFilePath))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
             return csv.GetRecords<ReservationModel>().ToList();
@@ -56,10 +54,7 @@ public class ReservationRepository : IReservationRepository
 
     private void WriteToCsv(List<ReservationModel> reservations)
     {
-        Console.WriteLine("<------------------------>");
-        Console.WriteLine("Writing to file " + FilePath + ": " + reservations.ToString());
-        Console.WriteLine("<------------------------>");
-        using (var writer = new StreamWriter(FilePath))
+        using (var writer = new StreamWriter(Constants.ReservationFilePath))
         {
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
