@@ -1,5 +1,6 @@
 // LibraryManagementSystem/Data/Models/IDocumentObserver.cs
 public interface IDocumentObserver
 {
-    void Update(BookModel BookStatus);
+    // Method to update the observer with a changed book
+    void Update(BookModel book);
 }
