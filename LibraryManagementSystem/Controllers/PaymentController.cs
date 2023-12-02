@@ -24,23 +24,28 @@ public class PaymentController : Controller
                 reservations.Remove(reservations[i]);
             }
         }
-        return RedirectToAction("LateFees", reservations);
+        TempData.Put("ReservationData", reservations);
+        return RedirectToAction("LateFees");
     }
 
     //Action method for displaying overdue reservations
-    public IActionResult LateFees(List<ReservationModel> reservations)
+    public IActionResult LateFees()
     {
-        return View(reservations);
+        return View();
     }
 
     //Action method for paying a given fee. Redirects to LateFees() when paid.
-    public IActionResult PayFee(ReservationModel reservation)
+    public IActionResult PayFee(int reservationId)
     {
-        if (PaymentService.PayLateFee(reservation))
+        ReservationModel reservation = _reservations.GetReservationById(reservationId);
+        Receipt? receipt = PaymentService.PayLateFee(reservation);
+        if (receipt != null)
         {
             _reservations.RemoveReservation(reservation);
         }
-        return RedirectToAction("Index", reservation.UserId);
+        TempData["reservationId"] = reservationId;
+        TempData["receipt"] = receipt.GetReceipt();
+        return View();
     }
 
 }

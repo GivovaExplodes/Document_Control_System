@@ -4,3 +4,7 @@
 *.props
 *.editorconfig
 *.obj
+*.txt
+*.cache
+*.dll
+*.pdb

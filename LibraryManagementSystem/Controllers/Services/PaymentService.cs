@@ -1,5 +1,4 @@
 
-
 public static class PaymentService
 {
     const decimal costPerDayOverdue = 0.2M;
@@ -11,17 +10,21 @@ public static class PaymentService
         return (daysOverdue > 1) ? reservation.Surcharge + costPerDayOverdue * daysOverdue : 0;
     }
 
-    public static bool PayLateFee(ReservationModel reservation)
+    public static Receipt? PayLateFee(ReservationModel reservation)
     {
         decimal value = CalculateFee(reservation);
-        return Pay(value);
+        if (Pay(value))
+        {
+            return new WithTotal(value, new WithSurcharge(reservation.Surcharge, new WithOverdue((DateTime.Now - reservation.ReservationDate).Days, costPerDayOverdue, new ReservationReceipt(reservation))));
+        }
+        else return null;
     }
 
     private static bool Pay(decimal value)
     {
         //1) Open popup with payment provider
         //2) Charge users money
-        //Because this isn't a real business, Pay() always returns true to indicate a successful transaction.
+        //Because this isn't a real business, Pay() always returns true to indicate a successful transaction.        
         return true;
     }
 
