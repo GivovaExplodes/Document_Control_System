@@ -5,6 +5,7 @@ public class BookModel
     public required string Author { get; set; }
     public required string ISBN { get; set; }
     public int Quantity { get; set; }
+    public bool IsAvailable { get; internal set; }
 
     private IBookState currentState;
 
