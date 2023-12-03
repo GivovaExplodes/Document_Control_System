@@ -1,3 +1,7 @@
+@{
+    int userId = int.Parse((TempData["userId"]).ToString() ?? "0");
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +17,7 @@
 <body>
     <h2>Book Successfully Checked Out</h2>
 
-    <form asp-controller="Library" asp-action="Index" method="post">
+    <form asp-controller="Library" asp-action="Index" asp-route-userId="@userId" method="post">
         <button type="submit">Return</button>
     </form>
 </body>

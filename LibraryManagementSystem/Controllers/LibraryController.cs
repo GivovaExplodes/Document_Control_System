@@ -14,10 +14,11 @@ public class LibraryController : Controller
 
     // Action method for displaying all books
     [HttpPost]
-    public IActionResult Index()
+    public IActionResult Index(int userId)
     {
         var allBooks = _books.GetAll();
         TempData.Put("BookData", allBooks);
+        TempData["userId"] = userId;
         return View();
     }
 

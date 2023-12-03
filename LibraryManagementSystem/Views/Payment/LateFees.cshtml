@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = "Late Fees";
-    List<ReservationModel>? reservations;
-    reservations = TempData.Get<List<ReservationModel>>("ReservationData");
+    List<ReservationModel>? reservations = TempData.Get<List<ReservationModel>>("ReservationData");
+    int userId = int.Parse((TempData["userId"]).ToString() ?? "0");
 }
 
 <!DOCTYPE html>
@@ -61,7 +61,7 @@
                     }
                 </tbody>
             </table>
-            <form asp-controller="MainMenu" asp-action="Index" asp-route-userId="@reservations[0].UserId" method="post">
+            <form asp-controller="MainMenu" asp-action="Index" asp-route-userId="@userId" method="post">
                 <button type="submit">Return</button>
             </form>
 </body>

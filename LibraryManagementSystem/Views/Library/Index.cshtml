@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Library";
-    List<BookModel>? books;
-    books = TempData.Get<List<BookModel>>("BookData");
+    List<BookModel>? books = TempData.Get<List<BookModel>>("BookData");
+    int userId = int.Parse((TempData["userId"]).ToString() ?? "0");
+    TempData["userId"] = userId;
 }
 
 @model List<BookModel>
@@ -57,7 +58,7 @@
                                 <td>@book.Quantity</td>
                                 <td>@book.GetCurrentState()</td>
                                 <td>
-                                    <form asp-controller="Library" asp-action="CheckOutBook" asp-route-bookId="@book.BookId"  method="post">
+                                    <form asp-controller="Library" asp-action="CheckOutBook" asp-route-bookId="@book.BookId" method="post">
                                         <button type="submit">Check Out</button>
                                     </form>
                                 </td>
@@ -66,7 +67,7 @@
                     }
                 </tbody>
             </table>
-            <form asp-controller="MainMenu" asp-action="Index" method="post">
+            <form asp-controller="MainMenu" asp-action="Index" asp-route-userId="@userId" method="post">
                 <button type="submit">Return</button>
             </form>
         </div>
