@@ -2,7 +2,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 //Able to extract non-primitive objects from TempData functionality
-//Specifically used to store and retrieve List<ReservationModel>
+//Specifically used to store and retrieve Lists of type ReservationModel and BookModel
 //Code taken from https://stackoverflow.com/a/35042391
 public static class TempDataExtension
 {

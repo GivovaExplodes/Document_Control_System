@@ -2,7 +2,7 @@
 public static class ReceiptService {
     public static Receipt NewReservationReceipt(ReservationModel reservation)
     {
-        return new WithTotal(PaymentService.CalculateFee(reservation), new WithSurcharge(reservation.Surcharge, new WithOverdue((DateTime.Now - reservation.ReservationDate).Days, new ReservationReceipt(reservation))));
+        return new WithTotal(PaymentService.CalculateFee(reservation), new WithSurcharge(reservation.Surcharge, new WithOverdue(Math.Max((DateTime.Now - reservation.ReservationDate).Days - Constants.daysAllowedBeforeLate, 0), new ReservationReceipt(reservation))));
     }
 }
 

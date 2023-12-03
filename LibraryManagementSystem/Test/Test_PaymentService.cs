@@ -72,7 +72,7 @@ public class Test_PaymentService
                 ReservationDate = DateTime.Now,
                 Surcharge = 100
             },
-            "Reservation 0\nOverdue Cost: 0 * 0.2 = 0.0\nSurcharge: 100\nTotal: 0"),
+            "Reservation ID: 0\nOverdue Cost: 0 * 0.2 = 0.0\nSurcharge: 100\nTotal: 0"),
             new(new ReservationModel()
             {
                 UserId = 0,
@@ -81,7 +81,7 @@ public class Test_PaymentService
                 ReservationDate = DateTime.Now.AddDays(-14),
                 Surcharge = 100
             },
-            "Reservation 100\nOverdue Cost: 14 * 0.2 = 2.8\nSurcharge: 100\nTotal: 100.0")
+            "Reservation ID: 100\nOverdue Cost: 0 * 0.2 = 0.0\nSurcharge: 100\nTotal: 100.0")
             ,
             new(new ReservationModel()
             {
@@ -91,7 +91,7 @@ public class Test_PaymentService
                 ReservationDate = DateTime.Now.AddDays(-15),
                 Surcharge = 100
             },
-            "Reservation -60\nOverdue Cost: 15 * 0.2 = 3.0\nSurcharge: 100\nTotal: 100.2")
+            "Reservation ID: -60\nOverdue Cost: 1 * 0.2 = 0.2\nSurcharge: 100\nTotal: 100.2")
         };
 
         for (int i = 0; i < testReservations.Count; i++)
@@ -100,6 +100,5 @@ public class Test_PaymentService
             Assert.AreEqual(testReservations[i].output, receipt);
         }
     }
-
 
 }
