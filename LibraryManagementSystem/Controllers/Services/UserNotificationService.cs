@@ -1,5 +1,5 @@
 // LibraryManagementSystem/Controllers/Services/UserNotificationService.cs
-using LibraryManagementSystem.Data.Models; // Importing the namespace for BookModel
+
 
 public class UserNotificationService : IBookObserver
 {

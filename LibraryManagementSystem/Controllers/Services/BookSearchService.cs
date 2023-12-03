@@ -1,5 +1,5 @@
 // LibraryManagementSystem/Controllers/Services/DocumentSearchService.cs
-using LibraryManagementSystem.Data.Models; // Importing the namespace for BookModel
+
 
 public class BookSearchService
 {    
@@ -26,9 +26,9 @@ public class BookSearchService
     }
 
     // Search for a book by its ISBN
-    public BookModel SearchByISBN(string isbn)
+    public IEnumerable<BookModel> SearchByISBN(string isbn)
     {
         // Returns the first book (or null) that matches the given ISBN
-        return _books.FirstOrDefault(book => book.ISBN == isbn);
+        return _books.Where(book => book.ISBN.Contains(isbn, StringComparison.OrdinalIgnoreCase));
     }
 }

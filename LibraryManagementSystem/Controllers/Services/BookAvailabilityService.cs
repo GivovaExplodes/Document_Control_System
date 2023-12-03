@@ -1,7 +1,7 @@
 // LibraryManagementSystem/Controllers/Services/BookAvailabilityService.cs
-using LibraryManagementSystem.Data.Models; // Importing the namespace for BookModel
 
-public class BookAvailabilityService : IBookSubject
+
+public class BookAvailabilityService
 {
     private List<IBookObserver> _observers = new List<IBookObserver>(); // List of observers
     private BookModel _book; // The book being observed
@@ -36,4 +36,5 @@ public class BookAvailabilityService : IBookSubject
         _book.IsAvailable = isAvailable;
         Notify();
     }
+
 }
