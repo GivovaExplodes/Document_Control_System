@@ -20,7 +20,7 @@ public class ReservationReceipt : Receipt {
 
     public override string GetReceipt()
     {
-        return "Reservation " + reservationModel.ReservationId;
+        return "Reservation ID: " + reservationModel.ReservationId;
     }
 }
 

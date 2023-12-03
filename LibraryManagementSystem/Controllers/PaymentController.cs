@@ -2,14 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 
 public class PaymentController : Controller
 {
-    const int allowedWithdrawTimeInDays = 14;
+    private readonly LibraryModel _library;
     private readonly ReservationRepository _reservations;
     private TimeSpan allowedWithdrawTime;
 
     public PaymentController()
     {
         _reservations = new ReservationRepository();
-        allowedWithdrawTime = new TimeSpan(allowedWithdrawTimeInDays, 0, 0, 0);
+        _library = new LibraryModel();
+        allowedWithdrawTime = new TimeSpan(Constants.daysAllowedBeforeLate, 0, 0, 0);
     }
 
     //redirects to LateFees()
@@ -42,6 +43,7 @@ public class PaymentController : Controller
         if (receipt != null)
         {
             _reservations.RemoveReservation(reservation);
+            _library.GetBookById(reservation.BookId).Return();
         }
         TempData["reservationId"] = reservationId;
         TempData["receipt"] = receipt.GetReceipt();

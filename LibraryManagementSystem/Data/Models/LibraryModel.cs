@@ -18,7 +18,7 @@ public class LibraryModel
         return books;
     }
 
-        public List<BookModel> GetCheckedOutBooks()
+    public List<BookModel> GetCheckedOutBooks()
     {
         List<BookModel> allBooks = GetAllBooks();
         List<BookModel> checkedOutBooks = new List<BookModel>();
@@ -66,6 +66,12 @@ public class LibraryModel
         }
     }
 
+    public void ReturnBook(int bookid)
+    {
+        var existingBook = books.FirstOrDefault(b => b.BookId == bookid);
+        existingBook?.Return();
+    }
+
     public void RemoveBook(int bookId)
     {
         var bookToRemove = books.FirstOrDefault(b => b.BookId == bookId);
@@ -110,6 +116,4 @@ public class LibraryModel
             users.Remove(userToRemove);
         }
     }
-
-    // Additional methods for managing transactions, searching books, etc.
 }
