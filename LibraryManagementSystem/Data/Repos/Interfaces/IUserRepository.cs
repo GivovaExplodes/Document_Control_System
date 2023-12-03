@@ -1,4 +1,4 @@
-using LibraryManagementSystem.Models;
+
 public interface IUserRepository
 {
     Task AddUserAsync(UserModel user);

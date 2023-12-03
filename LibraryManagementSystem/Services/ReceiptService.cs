@@ -1,6 +1,9 @@
 
 public static class ReceiptService {
-    
+    public static Receipt NewReservationReceipt(ReservationModel reservation)
+    {
+        return new WithTotal(PaymentService.CalculateFee(reservation), new WithSurcharge(reservation.Surcharge, new WithOverdue((DateTime.Now - reservation.ReservationDate).Days, new ReservationReceipt(reservation))));
+    }
 }
 
 
@@ -17,7 +20,7 @@ public class ReservationReceipt : Receipt {
 
     public override string GetReceipt()
     {
-        return "Reservation " + reservationModel.ReservationId;
+        return "Reservation ID: " + reservationModel.ReservationId;
     }
 }
 
@@ -36,16 +39,14 @@ public class WithSurcharge : ReceiptDecorator {
 
 public class WithOverdue : ReceiptDecorator {
     decimal daysOverdue;
-    decimal dailyCost;
-    public WithOverdue(decimal overdue, decimal costPerDay, Receipt r) : base(r)
+    public WithOverdue(decimal overdue, Receipt r) : base(r)
     {
         daysOverdue = overdue;
-        dailyCost = costPerDay;
     }
 
     public override string GetReceipt()
     {
-        return receipt.GetReceipt() + "\nOverdue Cost: " + daysOverdue + " * " + dailyCost + " = " + daysOverdue * dailyCost;
+        return receipt.GetReceipt() + "\nOverdue Cost: " + daysOverdue + " * " + Constants.costPerDayOverdue + " = " + daysOverdue * Constants.costPerDayOverdue;
     }
 }
 
@@ -61,7 +62,6 @@ public class WithTotal : ReceiptDecorator {
         return receipt.GetReceipt() + "\nTotal: " + total;
     }
 }
-
 
 public class ReceiptDecorator : Receipt {
     public Receipt receipt;

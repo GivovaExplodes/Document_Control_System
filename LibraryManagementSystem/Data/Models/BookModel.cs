@@ -6,18 +6,6 @@ public class BookModel
     public required string ISBN { get; set; }
     public int Quantity { get; set; }
 
-    //updated to state design pattern - MB
-    //public BookStatus Status { get; set; } // Enum for available, checked out, etc.
-
-    /*public enum BookStatus
-    {
-        Available,
-        CheckedOut,
-        OnHold,
-        Lost,
-        // Add more statuses as needed - MJ
-    }*/
-
     private IBookState currentState;
 
     public BookModel()

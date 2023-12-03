@@ -1,9 +1,8 @@
 using System.Globalization;
 using CsvHelper;
+
 public class UserRepository : IUserRepository
 {
-    private const string FilePath = "Data/Databases/Users.csv";
-
     public async Task AddUserAsync(UserModel user)
     {
         var users = ReadFromCsv();
@@ -66,7 +65,7 @@ public class UserRepository : IUserRepository
 
     private List<UserModel> ReadFromCsv()
     {
-        using (var reader = new StreamReader(FilePath))
+        using (var reader = new StreamReader(Constants.UserFilePath))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
             return csv.GetRecords<UserModel>().ToList();
@@ -75,7 +74,7 @@ public class UserRepository : IUserRepository
 
     private async Task<List<UserModel>> ReadFromCsvAsync()
     {
-        using (var reader = new StreamReader(FilePath))
+        using (var reader = new StreamReader(Constants.UserFilePath))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
             return await Task.Run(() => csv.GetRecords<UserModel>().ToList());
@@ -85,7 +84,7 @@ public class UserRepository : IUserRepository
 
     private async Task WriteToCsvAsync(IEnumerable<UserModel> users)
     {
-        using (var writer = new StreamWriter(FilePath))
+        using (var writer = new StreamWriter(Constants.UserFilePath))
         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
         {
             await csv.WriteRecordsAsync(users);

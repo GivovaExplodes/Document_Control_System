@@ -3,8 +3,6 @@ using CsvHelper;
 
 public class BookRepository : IBookRepository
 {
-    private const string FilePath = "Data/Databases/Books.csv";
-
     public BookModel GetBookById(int bookId)
     {
         var books = ReadFromCsv();
@@ -36,7 +34,7 @@ public class BookRepository : IBookRepository
 
     private List<BookModel> ReadFromCsv()
     {
-        using (var reader = new StreamReader(FilePath))
+        using (var reader = new StreamReader(Constants.BookFilePath))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
             return csv.GetRecords<BookModel>().ToList();
@@ -45,7 +43,7 @@ public class BookRepository : IBookRepository
 
     private void WriteToCsv(IEnumerable<BookModel> books)
     {
-        using (var writer = new StreamWriter(FilePath))
+        using (var writer = new StreamWriter(Constants.BookFilePath))
         using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
         {
             csv.WriteRecords(books);

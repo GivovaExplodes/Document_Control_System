@@ -1,3 +1,0 @@
-ReservationId,UserId,BookId,ReservationDate,Surcharge
-1,1,1,09/15/2023 09:00:00,3
-2,1,2,10/15/2023 09:00:00,5
