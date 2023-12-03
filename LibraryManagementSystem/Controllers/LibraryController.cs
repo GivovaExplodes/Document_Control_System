@@ -4,19 +4,22 @@ using Microsoft.AspNetCore.Mvc;
 public class LibraryController : Controller
 {
     private readonly LibraryModel _library;
+    private readonly BookRepository _books;
 
     public LibraryController()
     {
-        // Initialize your LibraryModel instance
+        _books = new BookRepository();
         _library = new LibraryModel();
     }
 
     // Action method for displaying all books
     [HttpPost]
-    public IActionResult Index()
+    public IActionResult Index(int userId)
     {
-        var allBooks = _library.GetAllBooks();
-        return View(allBooks);
+        var allBooks = _books.GetAll();
+        TempData.Put("BookData", allBooks);
+        TempData["userId"] = userId;
+        return View();
     }
 
     // Action method for checking out a book
@@ -24,11 +27,8 @@ public class LibraryController : Controller
     public IActionResult CheckOutBook(int bookId)
     {
         _library.CheckOutBook(bookId);
-        // Implement the logic for checking out a book
-        // For simplicity, let's just remove the book for now
-        
-        // Redirect back to the Index action
-        return RedirectToAction("Index");
+
+        return RedirectToAction("CheckedOutBooks");
     }
 
     // Action method for showing checked-out books
@@ -36,7 +36,6 @@ public class LibraryController : Controller
     {
         // Implement the logic for showing checked-out books
         // For simplicity, let's just return a view with all books
-        var checkedOutBooks = _library.GetAllBooks();
-        return View(checkedOutBooks);
+        return View();
     }
 }

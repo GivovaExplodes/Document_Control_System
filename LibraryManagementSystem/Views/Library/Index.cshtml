@@ -1,5 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Library";
+    List<BookModel>? books = TempData.Get<List<BookModel>>("BookData");
+    int userId = int.Parse((TempData["userId"]).ToString() ?? "0");
+    TempData["userId"] = userId;
 }
 
 @model List<BookModel>
@@ -43,25 +46,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var book in Model)
+                    @if (books != null)
                     {
-                        <tr>
-                            <td>@book.BookId</td>
-                            <td>@book.Title</td>
-                            <td>@book.Author</td>
-                            <td>@book.ISBN</td>
-                            <td>@book.Quantity</td>
-                            <td>@book.GetCurrentState()</td>
-                            <td>
-                                <form method="post" asp-action="CheckOutBook">
-                                    <input type="hidden" name="bookId" value="@book.BookId" />
-                                    <button type="submit">Check Out</button>
-                                </form>
-                            </td>
-                        </tr>
+                        @foreach (var book in books)
+                        {
+                            <tr>
+                                <td>@book.BookId</td>
+                                <td>@book.Title</td>
+                                <td>@book.Author</td>
+                                <td>@book.ISBN</td>
+                                <td>@book.Quantity</td>
+                                <td>@book.GetCurrentState()</td>
+                                <td>
+                                    <form asp-controller="Library" asp-action="CheckOutBook" asp-route-bookId="@book.BookId" method="post">
+                                        <button type="submit">Check Out</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
                     }
                 </tbody>
             </table>
+            <form asp-controller="MainMenu" asp-action="Index" asp-route-userId="@userId" method="post">
+                <button type="submit">Return</button>
+            </form>
         </div>
     </div>
 </body>

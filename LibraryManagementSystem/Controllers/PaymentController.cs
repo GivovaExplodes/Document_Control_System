@@ -25,6 +25,7 @@ public class PaymentController : Controller
             }
         }
         TempData.Put("ReservationData", reservations);
+        TempData["userId"] = userId;
         return RedirectToAction("LateFees");
     }
 

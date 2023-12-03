@@ -56,8 +56,7 @@
                 <button type="submit">Pay late fees.</button>
             </form>
 
-            <!-- Add more content based on the user's role or specific requirements -->
-            <form asp-controller="Library" asp-action="Index" method="post">
+            <form asp-controller="Library" asp-action="Index" asp-route-userId="@Model.UserId" method="post">
                 <button type="submit">Library</button>
             </form>        
         </div>
