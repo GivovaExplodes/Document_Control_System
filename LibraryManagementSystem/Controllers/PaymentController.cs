@@ -43,7 +43,7 @@ public class PaymentController : Controller
         if (receipt != null)
         {
             _reservations.RemoveReservation(reservation);
-            _library.GetBookById(reservation.BookId).Return();
+            _library.ReturnBook(reservation.BookId);
         }
         TempData["reservationId"] = reservationId;
         TempData["receipt"] = receipt.GetReceipt();
