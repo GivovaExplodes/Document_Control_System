@@ -1,5 +1,5 @@
 // LibraryManagementSystem/Data/Models/IDocumentSubject.cs
-public interface IDocumentSubject
+public interface IBookSubject
 {
     // Add an observer to the notification list
     void Attach(IBookObserver observer);
