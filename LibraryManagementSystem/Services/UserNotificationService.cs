@@ -1,6 +1,3 @@
-// LibraryManagementSystem/Controllers/Services/UserNotificationService.cs
-
-
 public class UserNotificationService : IBookObserver
 {
     // Method to handle the update notification

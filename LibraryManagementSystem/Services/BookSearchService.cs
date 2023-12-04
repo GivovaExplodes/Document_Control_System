@@ -1,6 +1,3 @@
-// LibraryManagementSystem/Controllers/Services/DocumentSearchService.cs
-
-
 public class BookSearchService
 {    
     private readonly IEnumerable<BookModel> _books; // Collection of all books
